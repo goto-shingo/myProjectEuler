@@ -1,18 +1,23 @@
 object problem002 {
   def main(args: Array[String]) {
-    val newList = fibToListUntil(100)
-    println(newList)
+    var answer = 0
+    val list = fibToListUntil(4000000)
+    println(list)
+
+    answer = newList.filter(_ % 2 == 0).sum
+    println(answer)
   }
 
   def fibToListUntil(n: Int) = {
     var count: Int = 0
-    var fibNum: Long = 0
-    var list:List[Long] = Nil
+    var fibNum: Int = 0
+    var list:List[Int] = Nil
     do {
       count += 1
       fibNum = fib(count)
-      list = fibNum :: list
-      println(count, list)
+      if(fibNum <= n) {
+        list = fibNum :: list
+      }
     } while(fibNum <= n)
     list
   }
@@ -20,7 +25,7 @@ object problem002 {
   def fibToList(n: Int) =
     for(i <- 1 to n) yield fib(i)
 
-  def fib(n: Long): Long =
+  def fib(n: Int): Int =
     n match {
       case 0 => 0
       case 1 => 1
