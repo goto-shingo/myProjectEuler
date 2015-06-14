@@ -1,20 +1,24 @@
 object problem002 {
   def main(args: Array[String]) {
-    /*
-    for(n <- 1 to 10) {
-      println("answer is " + fib(n))
-    }*/
-    val list = fibToList(10)
-    list.foreach(println("value is " + _))
+    val newList = fibToListUntil(100)
+    println(newList)
   }
 
-  def fibToList(n: Int) = {
-    val list:List[Long] = List.empty
-
-    for(i <- 1 to n) {
-      list :+ fib(i)
-    }
+  def fibToListUntil(n: Int) = {
+    var count: Int = 0
+    var fibNum: Long = 0
+    var list:List[Long] = Nil
+    do {
+      count += 1
+      fibNum = fib(count)
+      list = fibNum :: list
+      println(count, list)
+    } while(fibNum <= n)
+    list
   }
+
+  def fibToList(n: Int) =
+    for(i <- 1 to n) yield fib(i)
 
   def fib(n: Long): Long =
     n match {
