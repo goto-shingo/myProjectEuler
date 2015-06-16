@@ -4,8 +4,8 @@ object problem002 {
     val list = fibToListUntil(4000000)
     println(list)
 
-    answer = newList.filter(_ % 2 == 0).sum
-    println(answer)
+    answer = list.filter(_ % 2 == 0).sum
+    println("answer is " + answer)
   }
 
   def fibToListUntil(n: Int) = {
